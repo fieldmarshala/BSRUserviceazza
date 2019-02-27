@@ -24,49 +24,61 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <!--Name-->
-            <EditText
-                android:inputType="text"
-                android:hint="Name :"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <!--Gender-->
-            <TextView
-                android:textSize="18sp"
-                android:text="Gender : "
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <RadioGroup
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                <!--Avatar-->
+                <ImageView
+                    android:id="@+id/imvAvatar"
+                    android:src="@drawable/add"
+                    android:layout_marginBottom="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
 
-                <!--Male-->
-                <RadioButton
-                    android:layout_marginLeft="50dp"
-                    android:text="Male"
+                <!--Name-->
+                <EditText
+                    android:id="@+id/edtName"
+                    android:inputType="text"
+                    android:hint="Name :"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <!--Gender-->
+                <TextView
+                    android:id="@+id/ragGender"
+                    android:textSize="18sp"
+                    android:text="Gender : "
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-                <!--Female-->
-                <RadioButton
-                    android:layout_marginLeft="50dp"
-                    android:text="Female"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </RadioGroup>
+                <RadioGroup
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <!--User-->
-            <EditText
-                android:inputType="text"
-                android:hint="User :"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <!--Password-->
-            <EditText
-                android:inputType="text"
-                android:hint="Password :"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                    <!--Male-->
+                    <RadioButton
+                        android:id="@+id/radMail"
+                        android:layout_marginLeft="50dp"
+                        android:text="Male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <!--Female-->
+                    <RadioButton
+                        android:id="@+id/radFemail"
+                        android:layout_marginLeft="50dp"
+                        android:text="Female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RadioGroup>
+
+                <!--User-->
+                <EditText
+                    android:inputType="text"
+                    android:hint="User :"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <!--Password-->
+                <EditText
+                    android:inputType="text"
+                    android:hint="Password :"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
         </LinearLayout>
 
