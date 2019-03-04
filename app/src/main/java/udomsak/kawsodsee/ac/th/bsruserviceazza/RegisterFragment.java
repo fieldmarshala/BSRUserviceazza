@@ -10,6 +10,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -45,7 +47,7 @@ public class RegisterFragment extends Fragment {
         ((MainActivity) getActivity()).setSupportActionBar(toolbar);
 
         //Setup Title
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Register");
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.register));
         ((MainActivity) getActivity()).getSupportActionBar().setSubtitle("Please Fill Every Blank");
 
         // Setup Navigation Icon
@@ -57,7 +59,19 @@ public class RegisterFragment extends Fragment {
                 getActivity().getSupportFragmentManager().popBackStack();
             }
         });
+        setHasOptionsMenu(true);
+
+    }   // main method
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+
+        inflater.inflate(R.menu.menu_register,menu);
+
+
     }
+
     private void avatarController(){
         imageView = getView().findViewById(R.id.imvAvatar);
         imageView.setOnClickListener(new View.OnClickListener() {
