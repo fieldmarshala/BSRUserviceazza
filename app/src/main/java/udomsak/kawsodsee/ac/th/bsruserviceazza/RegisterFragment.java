@@ -12,9 +12,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 
@@ -22,6 +25,9 @@ import android.widget.TextView;
  * A simple {@link Fragment} subclass.
  */
 public class RegisterFragment extends Fragment {
+
+    private boolean aBoolean = true;
+    private String genderString;
 
     private Uri uri;
     private ImageView imageView;
@@ -61,7 +67,62 @@ public class RegisterFragment extends Fragment {
         });
         setHasOptionsMenu(true);
 
+//        Gender Controller
+        RadioGroup radioGroup = getView().findViewById(R.id.ragGender);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                aBoolean = false;
+                switch (checkedId) {
+                    case R.id.radMale:
+                        genderString = "Male";
+                        break;
+                    case R.id.radFemale:
+                        genderString = "Female";
+                        break;
+                }
+            }
+        });
+
     }   // main method
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == R.id.itemUpload) {
+
+            checkValueAndUpload();
+
+        }   // if
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void checkValueAndUpload() {
+        // Get Value from EditText
+        EditText nameEditText = getView().findViewById(R.id.edtName);
+        EditText userEditText = getView().findViewById(R.id.edtUser);
+        EditText passwordEditText = getView().findViewById(R.id.edtPassword);
+
+        String name = nameEditText.getText().toString().trim();
+        String user = nameEditText.getText().toString().trim();
+        String password = passwordEditText.getText().toString().trim();
+
+        // trim ตัดช่องว่าง
+
+        MyAlert myAlert = new MyAlert(getActivity());
+
+        if (name.isEmpty() || user.isEmpty() || password.isEmpty()) {
+            // have space
+            myAlert.normalDialog("Have Space","Please fill all blank");
+        } else if (aBoolean) {
+            myAlert.normalDialog("No Gender","Please Choose Gender");
+        } else {
+            
+
+
+        }
+    }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
