@@ -41,7 +41,7 @@
                     android:layout_height="wrap_content" />
                 <!--Gender-->
                 <TextView
-                    android:id="@+id/ragGender"
+
                     android:textSize="18sp"
                     android:text="Gender : "
                     android:layout_width="wrap_content"
