@@ -1,5 +1,6 @@
 package udomsak.kawsodsee.ac.th.bsruserviceazza;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -8,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 public class ServiceActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
@@ -22,7 +25,22 @@ public class ServiceActivity extends AppCompatActivity {
 //        Create Toolbar
         createToolbar();
 
+//        Map Activity
+        mapController();
+
     } // Main Method
+
+    private void mapController() {
+        TextView textView = findViewById(R.id.txtShowMap);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ServiceActivity.this,MapsActivity.class);
+                startActivity(intent);
+                drawerLayout.closeDrawers();
+            }
+        });
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
