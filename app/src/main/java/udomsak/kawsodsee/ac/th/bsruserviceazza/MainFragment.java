@@ -11,6 +11,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 
 /**
@@ -56,17 +60,31 @@ public class MainFragment extends Fragment {
 
                 if (user.isEmpty() || password.isEmpty()) {
                     // Have space
-                    myAlert.normalDialog("Have Space","Please fill every blank");
+                    myAlert.normalDialog("Have Space", "Please fill every blank");
                 } else {
                     // No space
                     MyConstant myConstant = new MyConstant();
                     try {
                         GetUserWhereUserThread getUserWhereUserThread = new GetUserWhereUserThread(getActivity());
                         // class object = new class(getActivity)
-                        getUserWhereUserThread.execute(user,myConstant.getUrlGetUserWhereUser());
+                        getUserWhereUserThread.execute(user, myConstant.getUrlGetUserWhereUser());
 
                         String json = getUserWhereUserThread.get();
-                        Log.d("5MarchV1","json = " + json);
+                        Log.d("5MarchV1", "json = " + json);
+
+                        if (json.equals("null")) {
+                            myAlert.normalDialog("User False", "No " + user + " In My Database");
+                        } else {
+                            JSONArray jsonArray = new JSONArray(json);
+                            JSONObject jsonObject = jsonArray.getJSONObject(0);
+
+                            if (password.equals(jsonObject.getString("Password"))) {
+                                Toast.makeText(getActivity(), "Welcome " + jsonObject.getString("Name"), Toast.LENGTH_SHORT).show();
+                            } else {
+                                myAlert.normalDialog("Password False", "Please Try Again Password False");
+                            }
+
+                        }
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -93,8 +111,9 @@ public class MainFragment extends Fragment {
             }
         });
     }
+
     // Workshop
-    private  void  Page1(){
+    private void Page1() {
         TextView page1 = getView().findViewById(R.id.txtPage1);
         page1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,7 +125,8 @@ public class MainFragment extends Fragment {
             }
         });
     }
-    private  void  Page2(){
+
+    private void Page2() {
         TextView page2 = getView().findViewById(R.id.txtPage2);
         page2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,7 +138,8 @@ public class MainFragment extends Fragment {
             }
         });
     }
-    private  void  Page3(){
+
+    private void Page3() {
         TextView page3 = getView().findViewById(R.id.txtPage3);
         page3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,7 +151,8 @@ public class MainFragment extends Fragment {
             }
         });
     }
-    private  void  Page4(){
+
+    private void Page4() {
         TextView page4 = getView().findViewById(R.id.txtPage4);
         page4.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,7 +164,8 @@ public class MainFragment extends Fragment {
             }
         });
     }
-    private  void  Page5(){
+
+    private void Page5() {
         TextView page5 = getView().findViewById(R.id.txtPage5);
         page5.setOnClickListener(new View.OnClickListener() {
             @Override
