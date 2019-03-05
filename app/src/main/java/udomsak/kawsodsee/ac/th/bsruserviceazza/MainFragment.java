@@ -1,6 +1,7 @@
 package udomsak.kawsodsee.ac.th.bsruserviceazza;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -80,6 +81,9 @@ public class MainFragment extends Fragment {
 
                             if (password.equals(jsonObject.getString("Password"))) {
                                 Toast.makeText(getActivity(), "Welcome " + jsonObject.getString("Name"), Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getActivity(),ServiceActivity.class);
+                                startActivity(intent);
+                                getActivity().finish();
                             } else {
                                 myAlert.normalDialog("Password False", "Please Try Again Password False");
                             }
